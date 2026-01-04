@@ -51,5 +51,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ```
 
 ---
-
-*This project was originally developed as a coding interview exercise for Supra and enhanced to demonstrate production-ready architectural patterns.*

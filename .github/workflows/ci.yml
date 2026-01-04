@@ -39,10 +39,10 @@ jobs:
       run: cargo clippy --all-targets --all-features -- -D warnings
       
     - name: Build
-      run: cargo build --quiet
+      run: cargo build
       
     - name: Run tests
-      run: cargo test --quiet
+      run: cargo test
       
     - name: Check documentation
       run: cargo doc --no-deps --document-private-items
