@@ -1,7 +1,7 @@
 use futures::stream;
+use query_pipeline::api::RealApi; // Import the RealApi
+use query_pipeline::{ingest_stream, spawn_processor};
 use std::sync::Arc;
-use supra_exercise::api::RealApi; // Import the RealApi
-use supra_exercise::{ingest_stream, spawn_processor};
 
 #[tokio::test]
 async fn test_ingest_and_process() {
