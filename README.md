@@ -1,26 +1,16 @@
-# Supra Exercise - Enhanced Implementation
-
-A Rust async query processing pipeline, originally developed as a coding interview exercise for **Supra** and enhanced to demonstrate production-ready architectural patterns.
+# Async Query Processing Pipeline
 
 ## Overview
 
-This project started as a 45-minute coding interview challenge and has been evolved into a comprehensive example showcasing:
+Async query processing pipeline in Rust demonstrating EMBP patterns, trait-based design, and production-ready error handling
+
+This project is meant to be a comprehensive example showcasing:
 
 - **Core Solution** - Async query processing with caching and deduplication
 - **Production Architecture** - Explicit Module Boundary Pattern (EMBP) for maintainable code organization
 - **Professional Standards** - Comprehensive testing, documentation, and reusable design
 
-### Interview vs. Production Implementation
-
-| **Interview Version (45 min)**        | **Enhanced Version (This Repo)**           |
-|----------------------------------------|---------------------------------------------|
-| Basic async processing                 | EMBP architectural pattern                  |
-| Simple caching logic                   | Generic, trait-based design                |
-| Minimal testing                        | Comprehensive unit + integration tests     |
-| Single file or basic modules          | Professional module boundaries              |
-| Working solution                       | Production-ready, maintainable codebase    |
-
-The core functionality remains the same, but the enhanced version demonstrates how to structure Rust applications for long-term maintainability and team collaboration.
+Structured for long-term maintainability and team collaboration.
 
 - **API abstraction layer** - Trait-based design for external API calls
 - **Stream ingestion** - Consumes query streams and forwards to processor
@@ -45,7 +35,7 @@ This pattern provides:
 ## Project Structure
 
 ```
-supra-exercise/
+query-pipeline-rs/
 ├── Cargo.toml
 ├── src/
 │   ├── lib.rs              ← Main library gateway
@@ -81,9 +71,8 @@ The enhanced implementation includes:
 - **Caching layer** - Deduplicates repeated queries
 - **Generic design** - Works with any `ApiCaller` implementation
 
-## Interview Problem Statement
+## Problem Statement
 
-The original coding challenge required:
 - Accept a stream of query strings
 - Make async API calls for each unique query
 - Cache results to avoid duplicate API calls
@@ -112,20 +101,7 @@ cargo build --release
 
 ### Testing
 ```bash
-# Run all tests (unit + integration)
 cargo test
-
-# Run only unit tests
-cargo test --lib
-
-# Run only integration tests  
-cargo test --test integration
-
-# Run with output visible
-cargo test -- --nocapture
-
-# Run specific test
-cargo test test_processor_with_mock_api_and_duplicates
 ```
 
 ### Test Coverage
@@ -146,8 +122,8 @@ async-trait = "0.1"
 ## Usage Example
 
 ```rust
-use supra_exercise::{spawn_processor, ingest_stream};
-use supra_exercise::api::RealApi;
+use query_pipeline::{spawn_processor, ingest_stream};
+use query_pipeline::api::RealApi;
 use futures::stream;
 use std::sync::Arc;
 
@@ -169,25 +145,6 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 ```
-
-## Why This Enhanced Version?
-
-This repository demonstrates the difference between **"interview code"** and **"production code"**:
-
-### Interview Constraints (45 minutes)
-- Focus on core algorithm and basic functionality
-- Simple module structure (probably just `main.rs` + helpers)
-- Minimal testing to prove the concept works
-- Get something working quickly
-
-### Production Enhancement (This Repo)
-- **Architectural patterns** for long-term maintainability
-- **EMBP module organization** enabling safe refactoring
-- **Comprehensive testing** with both unit and integration tests
-- **Professional documentation** and code organization
-- **Generic design** supporting different API implementations
-
-The enhanced version showcases senior-level thinking about code organization, testing strategies, and architectural patterns that matter in real-world software development.
 
 ## Performance Features
 
